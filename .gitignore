@@ -1,0 +1,6 @@
+# Bin
+lib/
+platform-tools/
+
+# Mac
+.DS_Store
