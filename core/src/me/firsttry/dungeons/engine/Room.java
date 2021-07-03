@@ -6,7 +6,7 @@
 
 package me.firsttry.dungeons.engine;
 
-public enum Rooms {
+public enum Room {
     STARTING_ROOM, // The room the player will start in
     TREASURE_ROOM, // A room with valuables
     BOSS_ROOM, // A room with the final boss battle

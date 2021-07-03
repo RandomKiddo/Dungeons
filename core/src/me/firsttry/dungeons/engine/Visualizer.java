@@ -6,8 +6,5 @@
 
 package me.firsttry.dungeons.engine;
 
-import me.firsttry.dungeons.engine.Room;
-
-public class Generator {
-    // Must connect nodes
+public class Visualizer {
 }
