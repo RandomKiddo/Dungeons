@@ -1,3 +1,9 @@
+/**
+ * Dungeons
+ * © 2021 RandomKiddo
+ * Licensed under the GNU GPLv3
+ */
+
 package me.firsttry.dungeons;
 
 import com.badlogic.gdx.ApplicationAdapter;
