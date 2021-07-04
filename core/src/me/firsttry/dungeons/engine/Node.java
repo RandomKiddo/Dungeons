@@ -6,15 +6,11 @@
 
 package me.firsttry.dungeons.engine;
 
-import me.firsttry.dungeons.engine.Room;
-import me.firsttry.dungeons.engine.MetaData;
-
 public class Node {
-    private Room room;
+    public Room ROOM;
+    private MetaData metaData;
     public Node(Room r) {
-        this.room = r;
-    }
-    public MetaData getData() {
-        return null; //impl
+        this.ROOM = r;
+        this.metaData = new MetaData(this);
     }
 }
