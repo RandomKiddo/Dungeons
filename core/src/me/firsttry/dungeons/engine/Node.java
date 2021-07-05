@@ -13,4 +13,7 @@ public class Node {
         this.ROOM = r;
         this.metaData = new MetaData(this);
     }
+    public final MetaData getMetaData() {
+        return this.metaData;
+    }
 }

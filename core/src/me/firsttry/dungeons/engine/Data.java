@@ -8,6 +8,7 @@ package me.firsttry.dungeons.engine;
 
 import java.util.HashMap;
 
+//Functional Interface
 public interface Data {
      HashMap<String, ? extends Object> getLinkedData();
 }
