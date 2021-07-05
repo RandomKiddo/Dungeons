@@ -8,13 +8,22 @@ package me.firsttry.dungeons.engine;
 
 public class Visualizer {
     private Node[][] map;
-    private Dimension dimension;
-    private Visualizer() {
-        this.dimension = Dimension.MapSize(generateDimension());
+    private StaticRoomSize reference;
+    private Visualizer(StaticRoomSize reference) {
+        this.reference = reference;
+        this.map = new Node[generateLength()][generateWidth()];
     }
-    private int[] generateDimension() {
-        int[] size = new int[2];
-        //continue impl
-        return size;
+    public static Visualizer Generate(StaticRoomSize reference) {
+        return new Visualizer(reference);
+    }
+    private int generateLength() {
+        int difference = this.reference.getMaxDimension().getLength() - this.reference.getMinDimension().getLength();
+        int rand = (int)(Math.random() * ++difference) + this.reference.getMinDimension().getLength();
+        return rand;
+    }
+    private int generateWidth() {
+        int difference = this.reference.getMaxDimension().getWidth() - this.reference.getMinDimension().getWidth();
+        int rand = (int)(Math.random() * ++difference) + this.reference.getMinDimension().getWidth();
+        return rand;
     }
 }
