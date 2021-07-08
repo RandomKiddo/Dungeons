@@ -68,7 +68,8 @@ public class Visualizer {
                 Room.CORRIDOR,
                 Room.TRAP_SECTION,
                 Room.ARENA_ROOM,
-                Room.CONNECTOR_ROOM
+                Room.CONNECTOR_ROOM,
+                Room.DEAD_END
         };
         final CardinalDirection[] availableDirections = {
                 CardinalDirection.NORTH,
@@ -77,11 +78,68 @@ public class Visualizer {
                 CardinalDirection.WEST
         };
         List<Room> usedRooms = new ArrayList<Room>(25);
-        boolean doneWithNorth = false;
-        //continue with gen
+        CardinalDirection startDirection = (CardinalDirection)(logger.locate("Continuous"));
+        boolean doneWithNonNorth = false;
+        while (!doneWithNonNorth) {
+            Room room = (Room)(choose(availableRooms));
+            if (room == Room.BOSS_ROOM && isIn(Room.BOSS_ROOM, usedRooms)) {
+                continue;
+            }
+            CardinalDirection placeDirection = ((int)(Math.random() * 2)) == 0 ? startDirection : CardinalDirection.NORTH;
+            int placeX = 0, placeY = 0;
+            if (placeDirection == CardinalDirection.EAST) {
+                placeX = currentX;
+                placeY = currentY - 1;
+            } else if (placeDirection == CardinalDirection.WEST) {
+                placeX = currentX;
+                placeY = currentY + 1;
+            } else {
+                placeX = currentX - 1;
+                placeY = currentY;
+            }
+            if (Room.deadEnds(room)) {
+                this.map[placeX][placeY] = new Node(room);
+                try {
+                    CardinalDirection[] directions = CardinalDirection.disclude(placeDirection, false);
+                    for (CardinalDirection currentDirection : directions) {
+                        switch (currentDirection) {
+                            case NORTH:
+                                //this.map
+                                break;
+                            case SOUTH:
+                                break;
+                            case EAST:
+                                break;
+                            case WEST:
+                                break;
+                            default:
+                                //tilt: should not get here
+                                break;
+                        }
+                    }
+                } catch (IndexOutOfBoundsException indexErr) {
+
+                }
+                // Do previous room movement checks
+            } else {
+                this.map[placeX][placeY] = new Node(room);
+                // Do previous room movement checks and log
+            }
+            if (1 == 0/* finalized condition */) {
+                doneWithNonNorth = true;
+            }
+        }
     }
     private Object choose(Object[] arr) {
         int rand = (int)(Math.random() * arr.length);
         return arr[rand];
+    }
+    private boolean isIn(Object object, List<? extends Object> list) {
+        for (Object obj : list) {
+            if (object.toString().equals(obj.toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

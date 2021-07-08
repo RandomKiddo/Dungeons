@@ -31,4 +31,30 @@ public enum CardinalDirection {
                 return NORTH;
         }
     }
+    public static CardinalDirection[] disclude(CardinalDirection direction, boolean includeDiagonals) {
+        if (includeDiagonals) {
+            final CardinalDirection[] available = {
+                    NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST };
+            CardinalDirection[] directions = new CardinalDirection[7];
+            int index = 0;
+            for (CardinalDirection current : available) {
+                if (current != direction) {
+                    directions[index] = current;
+                    ++index;
+                }
+            }
+            return directions;
+        } else {
+            final CardinalDirection[] available = { NORTH, SOUTH, EAST, WEST };
+            CardinalDirection[] directions = new CardinalDirection[3];
+            int index = 0;
+            for (CardinalDirection current : available) {
+                if (current != direction) {
+                    directions[index] = current;
+                    ++index;
+                }
+            }
+            return directions;
+        }
+    }
 }

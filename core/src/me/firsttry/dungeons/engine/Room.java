@@ -15,5 +15,13 @@ public enum Room {
     CORRIDOR, // A corridor connecting rooms
     TRAP_SECTION, // A trap for the player with enemies and explosives
     ARENA_ROOM, // A dome room with many mobs with high value
-    CONNECTOR_ROOM // A building room that branches out with many corridors
+    CONNECTOR_ROOM, // A building room that branches out with many corridors
+    DEAD_END; // An end to a pathway
+    public static boolean deadEnds(Room room) {
+        if (room == STARTING_ROOM || room == TREASURE_ROOM || room == BOSS_ROOM ||
+            room == DEAD_END) {
+            return true;
+        }
+        return false;
+    }
 }
